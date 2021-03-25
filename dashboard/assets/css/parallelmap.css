@@ -1,0 +1,62 @@
+.dimension { cursor: ns-resize; }
+.category {cursor: ew-resize; }
+.dimension tspan.name { font-size: 1.5em;} 
+.dimension tspan.sort {cursor: pointer; opacity: 0; }
+.dimension tspan.sort:hover { fill: rgb(78, 78, 78); }
+.dimension:hover tspan.sort { opacity: 1; }
+.dimension line { stroke: rgb(255, 255, 255); }
+.dimension rect { fill: rgb(255, 255, 255); stroke: none; fill-opacity: 0; }
+.dimension > rect, .category-background { fill: rgb(255, 255, 255); }
+.dimension > rect { display: none; }
+.category:hover rect { fill: rgb(255, 255, 255); fill-opacity: .3; }
+.dimension:hover > rect {fill-opacity: .3; }
+.ribbon path { stroke-opacity: 0; fill-opacity: .6; }
+.ribbon path.active { fill-opacity: .8; }
+.ribbon path.inactive { fill-opacity: .2; }
+.ribbon-mouse path { fill-opacity: 0; }
+
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  position: absolute;
+  font-size: 12px;
+  opacity: 1;
+  line-height: 1;
+  padding: 6px;
+  border-radius: 4px;
+}
+/*
+body {
+font-family: sans-serif;
+font-size: 16px;
+margin: 1em auto;
+position: relative;
+}
+h1, h2, .dimension text {
+text-align: center;
+font-family: "PT Sans", Helvetica;
+font-weight: 300;
+}
+h1 {
+font-size: 4em;
+margin: .5em 0 0 0;
+}
+h2 {
+font-size: 2em;
+margin: 1em 0 0.5em;
+border-bottom: solid #ccc 1px;
+}
+p.meta, p.footer {
+font-size: 13px;
+color: #333;
+}
+p.meta {
+text-align: center;
+}
+
+text.icicle { pointer-events: none; }
+*/
+
+.options { font-size: 12px; text-align: center; padding: 5px 0; }
+.source { float: right; }
+pre, code { font-family: "Menlo", monospace; }

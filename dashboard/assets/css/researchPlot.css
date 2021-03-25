@@ -1,0 +1,13 @@
+#resultAreaWiki{
+    height:80%;
+    padding:2em;
+    overflow-y: auto;
+}
+
+#tab32{
+    visibility: hidden;
+}
+
+#researchNavLink{
+    visibility: hidden;
+}

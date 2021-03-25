@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<style>
+			.nav-item .btn {
+			display: none;
+			}
+			/* Show the one that's active */
+			.nav-item .active .btn {
+			display: inline-block;
+			}
+		</style>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--<link href="https://fonts.googleapis.com/css?family=OpenSans:200,300,400,600,700,800" rel="stylesheet" />-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+
+        <title>Visual Analytics</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
+        <link href="./dashboard/assets/css/style.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.2/leaflet.css" />
+		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+		<link rel="stylesheet" href="./dashboard/assets/css/main.css" />
+		<link rel="stylesheet" href="./dashboard/assets/css/rSlider.css" />
+		<link rel="stylesheet" href="./dashboard/assets/css/worldmap.css" />
+		<link rel="stylesheet" href="./dashboard/assets/css/scatterplot.css" />
+		<link rel="stylesheet" href="./dashboard/assets/css/style.css" />
+
+		<link rel="stylesheet" href="./dashboard/assets/css/cities.css" />
+		<link rel="stylesheet" href="./dashboard/assets/css/parallelmap.css" />
+		<link rel="stylesheet" href="./dashboard/assets/css/treemap.css" />
+		<link rel="stylesheet" href="./dashboard/assets/css/researchPlot.css" />
+		
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+    </head>
+	<body>
+		
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<!-- <script src="http://vizjs.org/viz.v1.1.0.min.js"></script> -->
+		<div class="container-fluid">
+			<div id="scatterFilters">
+				<div class="row h-100 pt-2 pb-4">
+					<div class="col-sm-3 my-auto pt-4">
+						<label for="distanceRange" class="pl-4">Max distance from selected point</label>
+					</div>
+					<div class="col-sm-3 my-auto pt-4">
+						<input type="range" class="form-control-range" id="distanceRange" min="0.01" max="1" step="0.01"
+							   onInput="$('#rangeval').html($(this).val()); changeDistance()">
+					</div>
+					<div class="col-sm-3 my-auto pt-4">
+						<span id="rangeval">0.50<!-- Default value --></span>
+					</div>
+					<div class="col-sm-1 my-auto pt-4">
+						<div class="btn btn-info" onclick="exitScatterFilters()">
+							Exit
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row h-100 pt-2 pb-4" id="filtersRow">
+				<div class="col-sm-2 my-auto pt-4" id="atitleDiv">
+					<h3 id="title">
+						Pantheon
+					</h3>
+				</div>
+				<div class="col-sm-1 my-auto pt-4" id="resetColumn">
+					<div class="dropdown dropup">
+						<div class="btn btn-info" onclick="resetFilters()">
+							Reset
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2 my-auto" id="selectorDomain">
+					<div class="dropdown dropup">
+						<label for="domain">Domain</label>
+						<select class="form-control filter" id="domain">
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-2 my-auto" id="selectorOccupation">
+					<div class="dropdown dropup">
+						<label for="occupation">Occupation</label>
+						<select class="form-control filter" id="occupation">
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-2 my-auto" id="selectorCountry">
+					<div class="dropdown dropup">
+						<label for="country">Home country</label>
+						<select class="form-control filter" id="country">
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-2 my-auto" id="selectorHPI">
+					<label for="slider">Historical Popularity Index (HPI)</label>
+					<input type="text" id="slider" class="slider">
+					<!--
+					<div id="sliderScaleBox" style="width:100%; height:10px; border-left:1px solid darkgrey;border-right:1px solid darkgrey">
+						<!--<span id="sliderScaleSpanLeft" style="float: left;margin-top:0.8em; margin-left:-0.3em"></span>
+						<span id="sliderScaleSpanRight" style="float: right;margin-top:0.8em; margin-right:-0.6em"></span>
+					</div>
+					-->
+				</div>
+			</div>
+			<div class="row" >
+				<div class="col" id="content">
+					<div class="tabbable" id="tabs-left">
+						<ul class="nav nav-tabs">
+							<li class="nav-item" id="first-tab">
+								<lt>
+									<lt class="lt-highlighter__wrapper">
+										<lt class="lt-highlighter__scrollElement">
+										</lt>
+									</lt>
+								</lt>
+								<a class="nav-link active show" href="#tab11" data-toggle="tab">
+									<span>World Map</span>
+									<button style="font-size: 12px;" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Shows the data within the map. Click on a region on the map to filter the data by a country">
+										<i class="fas fa-info"></i>
+										Info
+									</button>
+								</a>
+							</li>
+							<li class="nav-item">
+								<lt>
+									<lt class="lt-highlighter__wrapper">
+										<lt class="lt-highlighter__scrollElement">
+										</lt>
+									</lt>
+								</lt>
+								<a class="nav-link" href="#tab12" data-toggle="tab">
+									<span>Scatterplot</span>
+									<button style="font-size: 12px;" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Shows the relationship between data points under t-SNE. Click on a data point to apply a cluster filter">
+										<i class="fas fa-info"></i>
+										Info
+									</button>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<lt>
+									<lt class="lt-highlighter__wrapper">
+										<lt class="lt-highlighter__scrollElement">
+										</lt>
+									</lt>
+								</lt>
+								<a class="nav-link" href="#tab13" data-toggle="tab">
+									<span>Tree Map</span>
+									<button style="font-size: 12px;" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Shows the most important 5 people in each occupation.">
+										<i class="fas fa-info"></i>
+										Info
+									</button>
+								</a>
+							</li>
+
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab11">
+								<div id="clusterStatistics"></div>
+								<div class="plot" id="leafletmap"></div>
+							</div>
+							<div class="tab-pane" id="tab12">
+								<div class="plot" id="scatter"></div>
+							</div>
+							<div class="tab-pane" id="tab13">
+								<div class="plot" id="treemap"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="tabbable" id="tabs-right">
+						<ul class="nav nav-tabs">
+							<li class="nav-item ml-2" id="second-tab">
+								<lt>
+									<lt class="lt-highlighter__wrapper">
+										<lt class="lt-highlighter__scrollElement">
+										</lt>
+									</lt>
+								</lt>
+									<a class="nav-link active show" href="#tab21" data-toggle="tab">
+										<span>Cities</span>
+										<button style="font-size: 12px;" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Shows the most important cities within selected filter.">
+											<i class="fas fa-info"></i>
+											Info
+										</button>
+									</a>
+							</li>
+							<li class="nav-item">
+								<lt>
+									<lt class="lt-highlighter__wrapper">
+										<lt class="lt-highlighter__scrollElement">
+										</lt>
+									</lt>
+								</lt>
+									<a class="nav-link" href="#tab22" data-toggle="tab">
+										<span>Parallel Map</span>
+										<button style="font-size: 12px;" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Shows the user the summary of 4 features within the selected filter.">
+											<i class="fas fa-info"></i>
+											Info
+										</button>
+									</a>
+							</li>
+							<li class="nav-item">
+								<lt>
+									<lt class="lt-highlighter__wrapper">
+										<lt class="lt-highlighter__scrollElement">
+										</lt>
+									</lt>
+								</lt>
+								<a id="researchNavLink" class="nav-link" href="#tab32" data-toggle="tab">
+									<span>Internet Results</span>
+									<button style="font-size: 12px;" type="button" class="btn btn-secondary"
+											data-container="body" data-toggle="popover" data-placement="top"
+											data-content="Shows internet results of selected point.">
+										<i class="fas fa-info"></i>
+										Info
+									</button>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane active show" id="tab21">
+							<div class="plot" id="cities"></div>
+							<div id="others_cities">
+								<span id="others_cities_left"></span>
+								<div id="others_bar">
+								</div>
+								<span id="others_cities_right"></span>
+								<span id="others_cities_right_indicator_1">Cities above is</span>
+								<span id="others_cities_right_indicator_2">100% of total</span>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab22">
+							<div class="plot" id="parallel"></div>
+						</div>
+						<div class="tab-pane show" id="tab32">
+							<div class="plot" id="InternetResearch">
+								<div id="resultAreaWiki"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="row footer"></div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.2/leaflet.js" charset="utf-8"></script>
+		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+		<script src="https://d3js.org/d3.v4.js"></script>
+		<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+		<script src="./dashboard/assets/js/rSlider.min.js"></script>
+		<script src="./dashboard/assets/js/tooltip.js"></script>
+		<script src="./dashboard/assets/js/legend.js"></script>
+		<script src="./dashboard/assets/js/d3.parsets.js"></script>
+		<script src="./dashboard/assets/js/utils.js"></script>
+		<script src="./dashboard/assets/js/viz.v1.1.0.min.js"></script>
+
+		<script src="./dashboard/assets/components/filtersManager.js"></script>
+		<script src="./dashboard/assets/components/worldmap.js"></script>
+		<script src="./dashboard/assets/components/scatterplot.js"></script>
+		<script src="./dashboard/assets/components/cities.js"></script>
+		<script src="./dashboard/assets/components/treemap.js"></script>
+		<script src="./dashboard/assets/components/parallelmap.js"></script>
+		<script src="./dashboard/assets/components/settings.js"></script>
+		<script src="./dashboard/assets/components/researchPlot.js"></script>
+
+		<script>
+			$(document).ready(function(){
+			  $('[data-toggle="popover"]').popover();
+			});
+		</script>
+
+	</body>
+</html>

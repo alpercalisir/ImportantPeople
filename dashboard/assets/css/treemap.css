@@ -1,0 +1,76 @@
+#chart {
+  max-width: 100%;
+  overflow:auto;
+}
+
+.grandparent text {
+  font-weight: bold;
+}
+
+#treemap rect {
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+rect.parent,
+.grandparent rect {
+  fill: yellow;
+  stroke-width: 3px;
+}
+.grandparent:hover rect {
+  fill: #eb7f24;
+}
+.children rect.parent,
+.grandparent rect {
+    fill:gold;
+  cursor: pointer;
+}
+.children rect.child {
+  fill: rgb(0, 238, 255); 
+  opacity: 0;
+}
+.children rect.parent {
+    fill: orange;
+}
+.children:hover rect.child {
+  opacity: 1;
+  stroke-width: 1px;
+  fill: #808080;
+}
+.children:hover rect.parent {
+  fill:rgb(255, 0, 106);
+  opacity: 0;
+}
+.legend {
+  margin-bottom:8px !important;
+}
+.legend rect {
+  stroke-width: 0px;
+}
+.legend text {
+  text-anchor: middle;
+  pointer-events: auto;
+  font-size: 13px;
+  fill: black;
+}
+.form-group {
+    text-align:left;
+}
+.textdiv {
+    font-size: 14px;
+    padding: 7px;
+    cursor: pointer;
+    overflow:none;
+}
+.textdiv .title {
+    font-size: 102%;
+    font-weight: bold;
+    margin-top: 8px;
+    font-size:11px !important;
+}
+.textdiv p{
+    line-height: 13px;
+    margin:0 0 4px !important;
+    padding:0px;
+    font-size:10px !important;
+}

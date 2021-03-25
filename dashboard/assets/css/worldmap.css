@@ -1,0 +1,212 @@
+#legend {
+  position: relative;
+  top: 3px;
+  left: 84%;
+  margin: 10px;
+  padding: 5px;
+  z-index: 100;
+  font-size: 1em;
+  width: 15%;
+  background: rgba(255,255,255,0.6);
+}
+
+.legendheading {
+  position: relative;
+  height: 25px;
+  padding: 5px 2px 0px 2px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.legenditem {
+  padding: 2px;
+  margin-bottom: 2px;
+}
+
+/*Marker clusters*/
+.marker-cluster-pie g.arc{
+  fill-opacity: 0.5;
+}
+.marker-cluster-pie-label {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+/*Markers*/
+.marker {
+  width: 18px;
+  height: 18px;
+  border-width: 2px;
+  border-radius:10px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-style: solid;
+  fill: #CCC;
+  stroke: #444;
+  background: #CCC;
+  border-color: #444;
+}
+
+.marker div{
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+/*marker categories*/
+.category-all{
+  padding-left:0.3em;
+}
+
+.category-0{
+  color: white;
+  fill: #1f77b4;
+  stroke: #000;
+  background: #1f77b4;
+  border-color: #000;
+}
+.category-1{
+  color: white;
+  fill: #ff7f0e;
+  stroke: #000;
+  background: #ff7f0e;
+  border-color: #000;
+}
+.category-2{
+  color: white;
+  fill: #2ca02c;
+  stroke: #000;
+  background: #2ca02c;
+  border-color: #000;
+}
+.category-3{
+  color: white;
+  fill: #d62728;
+  stroke: #000;
+  background: #d62728;
+  border-color: #000;
+}
+.category-4{
+  color: white;
+  fill: #9467bd;
+  stroke: #000;
+  background: #9467bd;
+  border-color: #000;
+}
+.category-5{
+  color: white;
+  fill: #8c564b;
+  stroke: #000;
+  background: #8c564b;
+  border-color: #000;
+}
+.category-6{
+  color: white;
+  fill: #e377c2;
+  stroke: #000;
+  background: #e377c2;
+  border-color: #000;
+}
+
+.category-7{
+  color: white;
+  fill: #7f7f7f;
+  stroke: #000;
+  background: #7f7f7f;
+  border-color: #000;
+}
+.category-8 {
+  color: white;
+  fill: #845ec2;
+}
+.category-9 {
+  color: white;
+  fill: #03506f;
+}
+
+/*Popup*/
+.map-popup span.heading {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.map-popup span.attribute {
+  display: block;
+}
+.map-popup span.label {
+  font-weight: bold;
+}
+
+#leafletmap rect {
+  fill: transparent;
+  shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.1);
+  shape-rendering: crispEdges;
+}
+
+.axisLine {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 2px;
+}
+
+#clusterStatistics{
+  position: absolute;
+  top: 50%;
+  margin: 10px;
+  padding: 5px;
+  z-index: 100;
+  font-size: 1em;
+  width: 25%;
+  background: rgba(255,255,255,0.6);
+  display: none;
+}
+
+.clusterStatisticsLeft{
+  left: 2%;
+}
+
+.clusterStatisticsRight{
+  left: 71%;
+}
+
+/*
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+/*
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+/*
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+*/

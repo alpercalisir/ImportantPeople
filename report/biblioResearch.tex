@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{amsmath}
+
+\graphicspath{{./images/}}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{geometry}
+ \geometry{
+ a4paper
+ }
+\begin{document}
+
+
+\begin{center}
+\vspace*{5cm}
+{\Huge
+\bfseries{
+	Important People
+	}
+  }
+  \vspace*{3cm}
+{\LARGE
+  	
+  	Alper Calisir - 1888955\\
+	Cappai Stefano - 1844363\\
+	De Luca Artur
+	
+	\vspace*{1cm}
+	March 3, 2021
+}
+\end{center}
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+\section{Description}
+Visual Analytics is a multidisciplinary research field which aims to combining data visualization and human ability to analize this data.
+In order to achieve this, Visual Analytics take a lot of ideas from another scientific fields, such machine learning, deep learning, geographical analysis, study about human-machine interactions and so on.
+For our purpose, we found really useful historic and geographical study, because we choose dataset about important people. In this dataset we have geographic coordinates, birth year and so we had to study how to make reduction of this type of parameters.
+
+\subsection{The Dataset}
+The dataset is in .tsv extensione. It's free downloadable on \\
+\url{https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/28201/VEG34D&version=1.0.}\\
+There are 11341 people.\\
+Each person has follow parameters:\\
+\begin{multicols}{3}
+\begin{itemize}
+\item en\_curid
+\item name
+\item numlangs
+\item birthcity
+\item birthstate
+\item countryName
+\item countryCode
+\item countryCode3
+\item LAT
+\item LON
+\item continentName
+\item birthyear
+\item gender
+\item occupation
+\item industry
+\item domain
+\item TotalPageViews
+\item L\_star
+\item StdDevPageViews
+\item PageViewsEnglish
+\item PageViewsNonEnglish
+\item AverageViews
+\item HPI
+\end{itemize}
+\end{multicols}
+In order to use homogeneous data, we have decided to remove people who do not 
+have certain parameters, 
+such as date or continent of birth.\\
+After this reduction, 10903 people remain, and
+on this we applied reduction and visual analysis. \\\\
+
+\section{Reduction}
+First step was reduction of data. We had study some papers that propose use of PCA, TSNE and Neural Networks. We preferred the first two because they work good on our data.
+In \cite{Andrienko} there is an interesting distinction between Data Analysis for support analytical reasoning and Data Analysis for data exploration. In that paper, author describes how geographical data could support reasoning by human analyst or could be primaly computational.\\
+
+\nocite{*}
+\bibliographystyle{amsplain}
+\bibliography{biblio}
+
+\end{document}

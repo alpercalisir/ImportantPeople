@@ -1,0 +1,69 @@
+#cities rect {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+.mainBars rect{
+    shape-rendering: auto;
+    fill-opacity: 0;
+    stroke-width: 0.5px;
+    stroke-opacity: 0;
+}
+
+.subBars{
+    stroke: rgb(0, 0, 0);
+    shape-rendering:crispEdges;
+}
+.edges{
+    fill: rgb(255, 0, 0);
+}
+
+#others_cities{
+    margin-top:-5vh;
+    padding-left:5%;
+    width: 90%;
+    display: none;
+}
+
+#others_cities_left{
+    float: left;
+}
+
+#others_cities_right{
+    float: right;
+    border:1px solid #dddddd;
+    width:37.5%;
+    height:50px;
+    margin-top: -50px;
+    margin-right:12%;
+    background-color:rgba(255, 255, 255, 0.8);
+}
+
+#others_cities_right_indicator_1{
+    position:absolute;
+    height:30px;
+    left:85%;
+    font-size: 1em;
+    margin-top:-0.6em;
+}
+
+#others_cities_right_indicator_2{
+    position:absolute;
+    height:30px;
+    left:85%;
+    font-size: 1em;
+    margin-top:0.6em;
+}
+
+#others_bar{
+    float: left;
+    border:1px solid #FFFFFF;
+    width: 75%;
+    height:50px;
+    margin-left:3%;
+    margin-top: -15px;
+    background-image: url("../../files/city.jpg");
+    background-size: 125px 50px;
+}
+
