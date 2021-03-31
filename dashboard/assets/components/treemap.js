@@ -193,7 +193,7 @@ function name(d) {
     return breadcrumbs(d) +
         (d.parent
         ? " -  Click to Here to Zoom Out"
-        : " - Choose Industry");
+        : " - Choose Domain");
 }
 
 function breadcrumbs(d) {
