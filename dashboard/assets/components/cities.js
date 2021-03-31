@@ -73,6 +73,8 @@ function citiesPlot(options) {
         $("#others_cities_right").width("77%")
         $("#others_cities_right_indicator_2").html("100% of total.")
 
+        others_percentage = 0
+
         $("#others_cities").show();
     }
 
