@@ -50,6 +50,9 @@ function resetFilters(){
     $('#country option').eq(0).prop('selected', true);
     mySlider.setValues(GlobalMinHPI, GlobalMaxHPI);
 
+    $("#occupation option").show()
+    $("#country option").show()
+
     filters = {
         continent: "",
         country: "",
