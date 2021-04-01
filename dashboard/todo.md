@@ -1,1 +1,0 @@
-Solve occupation filter bug 
