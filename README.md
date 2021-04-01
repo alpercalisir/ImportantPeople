@@ -1,5 +1,6 @@
 # Visual Analytics Project: Important People 
-[![report](https://img.shields.io/badge/Report-pdf-lightgrey)](https://nbviewer.jupyter.org/github/calisir/ImportantPeople/blob/master/Report.pdf) [![report](https://img.shields.io/badge/Demo-live-green)](https://calisir.github.io/ImportantPeople/)
+[![report](https://img.shields.io/badge/Report-pdf-lightgrey)](https://nbviewer.jupyter.org/github/calisir/ImportantPeople/blob/master/Report.pdf) [![demo](https://img.shields.io/badge/Demo-live-green)](https://calisir.github.io/ImportantPeople/) [![slides](https://img.shields.io/badge/Slides-ppt-blue)](https://docs.google.com/presentation/d/1pXiUyEJBQXn544ccQ9Zc2mMWiKWK_wbwZZQxDHpQRqc/edit?usp=sharing) 
+
 
 *Contributors:* Alper Calisir, Artur Back de Luca, and Stefano Cappai
 
